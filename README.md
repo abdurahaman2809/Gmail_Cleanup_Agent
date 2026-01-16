@@ -23,6 +23,7 @@ Smart Skipping: If the agent isn’t 100% sure, it skips—no accidental deletio
 🔑 Unlock Your Gmail: Get Your App Password
 Your regular Gmail password won’t work. Here’s how to get your App Password:
 
+-----------------------------------------------------------
 Enable 2-Step Verification (Google Account Security).
 Generate an App Password (under 2-Step Verification).
 Name it “Python Agent” and copy the 16-character code—this is your golden ticket.
@@ -40,7 +41,6 @@ Move deleted messages to: Trash
 This AI agent accesses your personal emails.
 
 Use at your own risk.
-Review the code if you’re unsure.
 Never share your app password.
 You’ve been warned—now go forth and declutter!
 
