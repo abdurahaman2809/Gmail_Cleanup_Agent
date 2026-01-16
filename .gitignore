@@ -3,9 +3,6 @@
 venv/
 /.venv
 
-# Environment variables
-.env
-
 # Python cache
 __pycache__/
 *.pyc
