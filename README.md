@@ -3,6 +3,13 @@ Tired of drowning in spam, promotions, and newsletters?
 Meet your AI-powered Gmail janitor—smart, safe, and ruthless with clutter. It doesn’t just clean; it liberates your inbox.
 
 -----------------------------------------------------------
+🖥️ Interactive UI & Real-Time Chat
+
+This app features a modern UI built with **Chainlit**, allowing you to interact with the Gmail Cleanup Agent through a friendly chatbot interface. Communication between your browser and the backend happens over **WebSocket**, ensuring real-time, seamless conversations and instant feedback as you manage your inbox.
+
+No manual refreshes or delays—just chat and watch your inbox get cleaner in real time!
+
+-----------------------------------------------------------
 🔥 Why You’ll Love It
 
 🧹 Deep Clean: Finds and trashes unwanted emails (spam, promotions, newsletters) in bulk.
