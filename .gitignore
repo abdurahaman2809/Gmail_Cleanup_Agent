@@ -1,0 +1,26 @@
+# Virtual Environment
+.venv/
+venv/
+/.venv
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Chainlit translations (auto-generated)
+.chainlit/translations/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files (optional - remove if you want to track)
+/repo
