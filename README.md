@@ -17,7 +17,9 @@ No manual refreshes or delays—just chat and watch your inbox get cleaner in re
 🗑️ No Regrets: Moves emails to Trash—not permanent deletion. Restore anytime within 30 days.
 🚫 Hands-Off: Just describe what you want cleaned, and the agent does the rest.
 💡 Beginner-Friendly: No code changes needed. Run the app, chat with the bot, and watch the magic.
-⚡ Optimized: Built for speed and efficiency—minimal tokens, maximum results.
+⚡ Optimized: Prompt-optimized for minimal token consumption—delivering maximum results with razor-sharp efficiency.
+📄 Pagination for Bulk Actions: Uses pagination for bulk email deletion to manage resources effectively.
+🚀 Concurrent Actions: The agent can invoke tools simultaneously for faster and more efficient inbox cleanup."
 
 -----------------------------------------------------------
 🛡️ Your Inbox’s Bodyguard: Guardrails
@@ -59,7 +61,7 @@ Fork or clone this repo.
 pip install -r requirements.txt
 
 -Fire up the app:
-chainlit run app.py -w
+chainlit run app.py
 
 -----------------------------------------------------------
 Chat with your new inbox superhero and watch the clutter vanish!
