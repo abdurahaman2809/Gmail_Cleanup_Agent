@@ -55,7 +55,7 @@ def search_emails(keyword: str) -> str:
     Args:
         keyword: The string to search for.
     """
-    time.sleep(21) # Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
+    time.sleep(20) # Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
     print(f"\n[TOOL] search_emails called with keyword='{keyword}'")
     global imap_client
     if not imap_client:
@@ -119,7 +119,7 @@ def fetch_recent_emails(batch_size: int, page: int = 1) -> str:
         batch_size: Number of emails per batch (default: 10)
         page: Which page/batch to fetch (1 = most recent 10, 2 = next 10, etc.)
     """
-    time.sleep(21) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
+    time.sleep(20) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
     print(f"\n[TOOL] fetch_recent_emails called with batch_size={batch_size}, page={page}")
     global imap_client
     if not imap_client:
@@ -178,7 +178,7 @@ def delete_emails_by_ids(email_ids: list[str]) -> str:
         email_ids: List of email UIDs to delete.
     """
 
-    time.sleep(21) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
+    time.sleep(20) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
     print(f"\n[TOOL] delete_emails_by_ids called with {len(email_ids)} emails: {email_ids}")
     global imap_client
     if not imap_client:

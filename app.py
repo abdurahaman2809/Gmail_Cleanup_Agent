@@ -77,7 +77,7 @@ async def start():
         # Store the agent in the session so we can use it in 'on_message'
         cl.user_session.set("agent", agent_executor)
 
-        await cl.Message(content="🤖 **Agent Ready!**\n\nYou can say things like: \n- *'Find emails from Upwork'* \n- *'Delete all newsletters'*").send()
+        await cl.Message(content="🤖 **Gmail Cleanup Agent at your Service!**\n\nYou can say things like: \n- *'Find emails from Upwork'* \n- *'Delete all newsletters'*").send()
 
     except Exception as e:
         await cl.Message(content=f"❌ **Error initializing Agent:** {e}").send()
