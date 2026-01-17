@@ -89,3 +89,5 @@ OpenAI (for the magic)
 -----------------------------------------------------------
 📢 Ready to reclaim your inbox?
 Run the app, chat with the bot, and enjoy the zen of a clean inbox. 🧘‍♂️📧
+
+**Disclaimer:** No data saved anywhere. This tool does not store your information.
