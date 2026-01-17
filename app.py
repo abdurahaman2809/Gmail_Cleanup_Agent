@@ -2,7 +2,8 @@ import imaplib
 import chainlit as cl
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
-
+from openai import RateLimitError
+import time
 from agent_prompts import GMAIL_AGENT_PROMPT
 from tools.gmail_tools import fetch_recent_emails, delete_emails_by_ids, set_imap_client, search_emails
 
@@ -57,19 +58,33 @@ async def start():
         msg.content = f"❌ **Connection Failed:** {e}\n\nPlease check your App Password and try again."
         await msg.update()
         return
-
+    
+    def rate_limiter(func):
+        time_store = [0]
+        def wrapper(*args, **kwargs):
+               current_time = time.time()
+               if time_store[0]==0 or current_time - time_store[0] >= 20:
+                   time_store[0] = time.time()
+                   return func(*args, **kwargs)
+               else:
+                   raise RateLimitError("Rate Limit Exceeded, Please wait 20 seconds before retrying.")
+        return wrapper
+    
     # 6. Initialize the Agent
     try:
-        llm = ChatOpenAI(
+        @rate_limiter
+        def llm_wrapper():
+            return ChatOpenAI(
             api_key=openai_api_key,
             model="gpt-4o-mini",
-            temperature=0
-        )
+            temperature=0.7
+             )
+        
 
         tools = [fetch_recent_emails, delete_emails_by_ids, search_emails]
 
         agent_executor = create_agent(
-            model=llm,
+            model=llm_wrapper(),
             tools=tools,
             system_prompt=GMAIL_AGENT_PROMPT
         )

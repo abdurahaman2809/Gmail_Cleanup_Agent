@@ -55,7 +55,6 @@ def search_emails(keyword: str) -> str:
     Args:
         keyword: The string to search for.
     """
-    time.sleep(20) # Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
     print(f"\n[TOOL] search_emails called with keyword='{keyword}'")
     global imap_client
     if not imap_client:
@@ -67,7 +66,7 @@ def search_emails(keyword: str) -> str:
         
         criteria = f'TEXT "{safe_keyword}"'
         
-        print(f"[DEBUG] Searching INBOX with criteria: {criteria}")
+        print(f"[Gmail Agent🤖] Searching INBOX with criteria: {criteria}")
         status, messages = imap_client.uid('SEARCH', criteria)
         
         if not messages or messages[0] is None or len(messages[0]) == 0:
@@ -77,9 +76,9 @@ def search_emails(keyword: str) -> str:
                 # Guardrail for prevention of deletion from sent items. Exclude Sent items by filtering OUT emails from me
                 if EMAIL_ACCOUNT:
                     criteria = f'(TEXT "{safe_keyword}" NOT FROM "{EMAIL_ACCOUNT}")'
-                    print(f"[DEBUG] Searching All Mail (excluding Sent) with: {criteria}")
+                    print(f"[Gmail Agent🤖] Searching All Mail (excluding Sent) with: {criteria}")
                 else:
-                    print("[DEBUG] EMAIL_ACCOUNT not set, searching for text only...")
+                    print("[Gmail Agent🤖] EMAIL_ACCOUNT not set, searching for text only...")
                 
                 status, messages = imap_client.uid('SEARCH', criteria)
             except Exception as e:
@@ -119,7 +118,7 @@ def fetch_recent_emails(batch_size: int, page: int = 1) -> str:
         batch_size: Number of emails per batch (default: 10)
         page: Which page/batch to fetch (1 = most recent 10, 2 = next 10, etc.)
     """
-    time.sleep(20) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
+
     print(f"\n[TOOL] fetch_recent_emails called with batch_size={batch_size}, page={page}")
     global imap_client
     if not imap_client:
@@ -133,7 +132,7 @@ def fetch_recent_emails(batch_size: int, page: int = 1) -> str:
         if EMAIL_ACCOUNT:
             criteria = f'(NOT FROM "{EMAIL_ACCOUNT}")'
             
-        print(f"[DEBUG] Fetching recent emails from All Mail with criteria: {criteria}")
+        print(f"[Gmail Agent🤖] Fetching recent emails from All Mail with criteria: {criteria}")
         status, messages = imap_client.uid('SEARCH', criteria)
         
         if not messages or messages[0] is None:
@@ -177,8 +176,6 @@ def delete_emails_by_ids(email_ids: list[str]) -> str:
     Args:
         email_ids: List of email UIDs to delete.
     """
-
-    time.sleep(20) #Rate Limit Handling for OpenAI Free Tier. Comment out if using paid tier.
     print(f"\n[TOOL] delete_emails_by_ids called with {len(email_ids)} emails: {email_ids}")
     global imap_client
     if not imap_client:
@@ -208,20 +205,20 @@ def delete_emails_by_ids(email_ids: list[str]) -> str:
                     # 2. Use UID STORE to Mark as Deleted in current folder (to remove from here)
                     imap_client.uid('STORE', email_id, '+FLAGS', '\\Deleted')
                     deleted_ids.append(email_id)
-                    print(f"[DEBUG] Moved UID {email_id} to Trash")
+                    print(f"[Gmail Agent🤖] Moved UID {email_id} to Trash")
                 else:
                     # Fallback: Just try marking deleted if Copy fails
                     imap_client.uid('STORE', email_id, '+FLAGS', '\\Deleted')
-                    print(f"[DEBUG] Could not copy to Trash, forced delete flag on UID {email_id}")
+                    print(f"[Gmail Agent🤖] Could not copy to Trash, forced delete flag on UID {email_id}")
                     
             except Exception as e:
-                print(f"[DEBUG] Failed to process UID {email_id}: {e}")
+                print(f"[Gmail Agent🤖] Failed to process UID {email_id}: {e}")
                 failed_ids.append(email_id)
         
         # Expunge to finalize cleanup in current folder
         if deleted_ids:
             imap_client.expunge()
-            print(f"[DEBUG] Expunged {len(deleted_ids)} emails")
+            print(f"[Gmail Agent🤖] Expunged {len(deleted_ids)} emails")
         
         result_msg = f"Successfully moved {len(deleted_ids)} emails to Trash: {deleted_ids}"
         if failed_ids:
@@ -229,5 +226,5 @@ def delete_emails_by_ids(email_ids: list[str]) -> str:
         return result_msg
         
     except Exception as e:
-        print(f"[DEBUG] Batch delete error: {e}")
+        print(f"[Gmail Agent🤖] Batch delete error: {e}")
         return f"Error during batch delete: {e}"

@@ -1,13 +1,13 @@
-🚀 Gmail Cleanup Agent: Your Inbox’s New Superhero
+🚀 Gmail-Cleanup Agent: Your Inbox’s New Superhero
 Tired of drowning in spam, promotions, and newsletters?
 Meet your AI-powered Gmail janitor—smart, safe, and ruthless with clutter. It doesn’t just clean; it liberates your inbox.
 
 -----------------------------------------------------------
 🖥️ Interactive UI & Real-Time Chat
 
-This app features a modern UI built with **Chainlit**, allowing you to interact with the Gmail Cleanup Agent through a friendly chatbot interface. Communication between your browser and the backend happens over **WebSocket**, ensuring real-time, seamless conversations and instant feedback as you manage your inbox.
+This app features a modern UI built with **Chainlit**, allowing you to interact with the Gmail-Cleanup Agent through a friendly chatbot interface. Communication between your browser and the backend happens over **WebSocket**, ensuring real-time, seamless conversations and instant feedback as you manage your inbox.
 
-No manual refreshes or delays—just chat and watch your inbox get cleaner in real time!
+No manual refreshes just chat and watch your inbox get cleaner in real time!
 
 -----------------------------------------------------------
 🔥 Why You’ll Love It
@@ -68,8 +68,8 @@ Chat with your new inbox superhero and watch the clutter vanish!
 
 💡 Pro Tip: Speed vs. Economy
 
-Free Tier? A 20-second timeout keeps things smooth.
-Got OpenAI credits? Comment out the timer for lightning-fast cleanup.
+Free Tier? A 20-second rate limiter keeps things smooth.
+Got OpenAI credits? Comment out the rate limiter settings for LLM for lightning-fast cleanup.
 
 -----------------------------------------------------------
 🌟 Future Upgrades
